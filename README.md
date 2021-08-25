@@ -3,7 +3,7 @@
 
 ChromeDriver:
 ```
-https://chromedriver.chromium.org/downloads
+	https://chromedriver.chromium.org/downloads
 ```
 
 Python 打包
@@ -13,5 +13,5 @@ Python 打包
 
 使用說明
 ```
-需先下載chromedriver放到資料夾Foodpanda資料夾底下
+	需先下載chromedriver放到資料夾Foodpanda資料夾底下
 ```

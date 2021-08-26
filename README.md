@@ -3,8 +3,8 @@
 
 Chrome捷徑:
 ```
-	預設捷徑**%HOMEPATH%\AppData\Local\Google\Chrome\Application\chrome.exe**
-	後面添加**"https://www.foodpanda.com.tw/login/new?step=email" --disable-notifications --incognito**
+	預設捷徑`%HOMEPATH%\AppData\Local\Google\Chrome\Application\chrome.exe`
+	後面添加`"https://www.foodpanda.com.tw/login/new?step=email" --disable-notifications --incognito`
 ```
 
 Python 打包

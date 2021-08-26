@@ -17,5 +17,5 @@ Python 打包
 
 使用說明
 ```
-	需先下載chromedriver放到資料夾Foodpanda資料夾底下
+	需先下載Foodpanda.lnk放到資料夾Foodpanda資料夾底下
 ```

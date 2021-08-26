@@ -1,9 +1,9 @@
 # Foodpanda
 
 
-ChromeDriver:
+Chrome捷徑:
 ```
-	https://chromedriver.chromium.org/downloads
+	捷徑後添加 > "https://www.foodpanda.com.tw/login/new?step=email" --disable-notifications --incognito
 ```
 
 Python 打包

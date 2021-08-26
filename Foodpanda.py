@@ -166,6 +166,14 @@ class Foodpanda(object):
     def openweb(self):
         os.startfile("Foodpanda.lnk")
 
+        # user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15"
+        # options = Options()
+        # options.add_argument("--disable-notifications")
+        # options.add_argument('--user-agent=%s' % user_agent)
+        # driver = webdriver.Chrome(executable_path='./chromedriver', chrome_options=options)
+        # driver.get('https://www.foodpanda.com.tw/login/new?step=email')
+
+
     def Screenshot(self):
         self.root.iconify()
         ScreenShot.ScreenShot()

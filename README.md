@@ -3,7 +3,8 @@
 
 Chrome捷徑:
 ```
-	捷徑後添加 > %HOMEPATH%\AppData\Local\Google\Chrome\Application\chrome.exe "https://www.foodpanda.com.tw/login/new?step=email" --disable-notific
+	捷徑後添加 > %HOMEPATH%\AppData\Local\Google\Chrome\Application\chrome.exe 
+	         > "https://www.foodpanda.com.tw/login/new?step=email" --disable-notifications --incognito
 ```
 
 Python 打包

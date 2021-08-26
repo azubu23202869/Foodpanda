@@ -28,15 +28,15 @@ class Threader(threading.Thread):
         self.wnd.title('日誌')
         self.wnd.geometry('400x200')
         self.wnd.resizable(0, 0)
-        self.Txt1 = ScrolledText(self.wnd, font=("consolas", "8", "normal"))
-        self.setT("請等待10秒...\n", self.Txt1)
+        self.Txt1 = ScrolledText(self.wnd, font=("consolas", "14", "normal"))
+        self.setT("請等待10秒，窗口會自動消失!!!!\n", self.Txt1)
         self.Txt1.pack(fill=tk.BOTH)
 
     def run(self):
         proc = subprocess.Popen('run.bat', shell=True, stdout=subprocess.PIPE)
         proc.communicate()
         if proc.poll() == 0:
-            self.setT(subprocess.getoutput('ipconfig | find /i "IPv4"'), self.Txt1)
+            # self.setT(subprocess.getoutput('ipconfig | find /i "IPv4"'), self.Txt1)
             sleep(3)
             self.wnd.destroy()
 
@@ -68,7 +68,7 @@ class Foodpanda(object):
 
         # 區域1 帳號顯示
         self.div1 = tk.Frame(master=self.backframe)
-        self.lb_view = tk.Label(self.div1, text="", font=('Arial', 18))
+        self.lb_view = tk.Label(self.div1, text="", font=('consolas', 18))
         self.lb_view.pack(padx=10, pady=5, fill=tk.BOTH, side=tk.TOP)
         self.bt_copyacc = tk.Button(self.div1, text="複製", command=self.copy_acc, width=5, height=2, state=tk.DISABLED)
         self.bt_copyacc.place(x=450)
@@ -81,34 +81,36 @@ class Foodpanda(object):
         self.bt_open.pack(padx=5, pady=5, side=tk.LEFT)
         self.bt_create = tk.Button(self.div2, text="點擊產生帳號", command=self.new_acc, width=14, height=2)
         self.bt_create.pack(padx=5, pady=5, side=tk.LEFT)
-        self.bt_saveacc = tk.Button(self.div2, text="儲存帳號", command=self.saveacc, width=14, height=2, state=tk.DISABLED)
+        self.bt_saveacc = tk.Button(self.div2, text="確認下單", command=self.saveacc, width=14, height=2, state=tk.DISABLED)
         self.bt_saveacc.pack(padx=5, pady=5, side=tk.LEFT)
-        self.bt_screens = tk.Button(self.div2, text="區域截圖", command=self.Screenshot, width=14, height=2)
+        self.bt_screens = tk.Button(self.div2, text="截圖(Enter複製)", command=self.Screenshot, width=14, height=2)
         self.bt_screens.pack(padx=5, pady=5, side=tk.LEFT)
         self.div2.pack(padx=10, pady=5, side=tk.TOP)
 
         # 區域3 按鈕區2
         self.div3 = tk.Frame(master=self.backframe)
-        self.bt_changeip = tk.Button(self.div3, text="變更IP", command=lambda: Threader(name='ChangeIP'), width=14, height=2)
+        self.bt_changeip = tk.Button(self.div3, text="無法創建帳號點我", command=lambda: Threader(name='ChangeIP'), width=14, height=2)
         self.bt_changeip.pack(padx=5, pady=5, side=tk.LEFT)
-        self.bt_openTxt = tk.Button(self.div3, text="開啟紀錄檔", command=self.openLog, width=14, height=2)
-        self.bt_openTxt.pack(padx=5, pady=5, side=tk.LEFT)
+        # self.bt_openTxt = tk.Button(self.div3, text="開啟紀錄檔", command=self.openLog, width=14, height=2)
+        # self.bt_openTxt.pack(padx=5, pady=5, side=tk.LEFT)
         self.div3.pack(padx=10, pady=5,  side=tk.TOP)
 
         # 區域4 LOG
         self.div4 = tk.Frame(master=self.backframe)
-        self.lb_1 = tk.Label(self.div4, text="產生帳號紀錄", font=('Arial', 10)).pack()
-        self.log_widget = ScrolledText(self.div4, width=42, height=5, font=("consolas", "8", "normal"))
-        self.log_widget.pack(side=tk.LEFT)
-        self.div4.pack(padx=10, pady=5,  side=tk.LEFT)
+        self.lb_1 = tk.Label(self.div4, text="帳號記錄", font=('consolas', 14)).pack()
+        self.log_widget = ScrolledText(self.div4, height=10, font=("consolas", "8", "normal"))
+        self.log_widget.pack(side=tk.TOP)
+        self.bt_openTxt = tk.Button(self.div4, text="開啟紀錄檔(查找帳號請點這!!!!)", command=self.openLog, width=14, height=2, bg='yellow')
+        self.bt_openTxt.pack(side=tk.TOP, fill=tk.X)
+        self.div4.pack(padx=10, pady=5,  side=tk.BOTTOM)
 
 
         # 區域5 SAVEACC
-        self.div5 = tk.Frame(master=self.backframe)
-        self.lb_2 = tk.Label(self.div5, text="已使用帳號", font=('Arial', 10)).pack()
-        self.log_widget_saveacc = ScrolledText(self.div5, width=42, height=5, font=("consolas", "8", "normal"))
-        self.log_widget_saveacc.pack(side=tk.LEFT)
-        self.div5.pack(padx=10, pady=5, side=tk.LEFT)
+        # self.div5 = tk.Frame(master=self.backframe)
+        # self.lb_2 = tk.Label(self.div5, text="已使用帳號", font=('Arial', 10)).pack()
+        # self.log_widget_saveacc = ScrolledText(self.div5, width=42, height=5, font=("consolas", "8", "normal"))
+        # self.log_widget_saveacc.pack(side=tk.LEFT)
+        # self.div5.pack(padx=10, pady=5, side=tk.LEFT)
 
         self.root.mainloop()
 
@@ -156,11 +158,11 @@ class Foodpanda(object):
 
     def saveacc(self):
         if self.content_savestate:
-            MsgBox = tk.messagebox.showinfo("帳號儲存", "此帳號已儲存過")
+            tk.messagebox.showinfo("帳號儲存", "此帳號已儲存過")
         else:
             acc = self.lb_view['text']
-            self.showinfo(acc, self.log_widget_saveacc)
-            self.logger.info("已使用" + acc)
+            self.showinfo("此帳號有下單過 : "+acc, self.log_widget)
+            self.logger.info("此帳號有下單過 : " + acc)
             self.content_savestate = True
 
     def openweb(self):

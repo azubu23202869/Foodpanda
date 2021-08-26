@@ -12,10 +12,9 @@ from tkinter import messagebox
 from tkinter.scrolledtext import ScrolledText
 import win32clipboard as w
 import win32con
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 import ScreenShot
-
+import webbrowser
+import os
 # https://www.foodpanda.com.tw/login/new?step=email
 logging.basicConfig(level=logging.INFO, filename='Foodpanda帳號儲存.log', format='%(asctime)s - %(message)s')
 
@@ -165,12 +164,7 @@ class Foodpanda(object):
             self.content_savestate = True
 
     def openweb(self):
-        user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Safari/605.1.15"
-        options = Options()
-        options.add_argument("--disable-notifications")
-        options.add_argument('--user-agent=%s' % user_agent)
-        driver = webdriver.Chrome(executable_path='./chromedriver', chrome_options=options)
-        driver.get('https://www.foodpanda.com.tw/login/new?step=email')
+        os.startfile("Foodpanda.lnk")
 
     def Screenshot(self):
         self.root.iconify()

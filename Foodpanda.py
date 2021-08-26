@@ -160,10 +160,12 @@ class Foodpanda(object):
         if self.content_savestate:
             tk.messagebox.showinfo("帳號儲存", "此帳號已儲存過")
         else:
-            acc = self.lb_view['text']
-            self.showinfo("此帳號有下單過 : "+acc, self.log_widget)
-            self.logger.info("此帳號有下單過 : " + acc)
-            self.content_savestate = True
+            MsgBox = tk.messagebox.askquestion('確認下單', '是否有點下單並且確認訂單?')
+            if MsgBox == 'yes':
+                acc = self.lb_view['text']
+                self.showinfo("此帳號有下單過 : "+acc, self.log_widget)
+                self.logger.info("此帳號有下單過 : " + acc)
+                self.content_savestate = True
 
     def openweb(self):
         os.startfile("Foodpanda.lnk")
